@@ -22,8 +22,8 @@ const getUserWithEmail = function(email) {
   SELECT * FROM users
   WHERE email = $1
   `, [email])
-    .then(res => res.rows[0]);
-};
+  .then(res => res.rows[0]);
+}
 exports.getUserWithEmail = getUserWithEmail;
 
 /**
@@ -36,8 +36,8 @@ const getUserWithId = function(id) {
   SELECT * FROM users
   WHERE email = $1
   `, [id])
-    .then(res => res.rows[0]);
-};
+  .then(res => res.rows[0]);
+}
 exports.getUserWithId = getUserWithId;
 
 
@@ -52,9 +52,9 @@ const addUser =  function(user) {
   VALUES($1, $2, $3)
   RETURNING *; 
   `, [user.name, user.email, user.password])
-    .then(res => res.rows)
-    .catch(err => console.log(err));
-};
+  .then(res => res.rows)
+  .catch(err => console.log(err));
+}
 exports.addUser = addUser;
 
 /// Reservations
@@ -109,8 +109,8 @@ const getAllProperties = function(options, limit = 10) {
   SELECT * FROM properties
   LIMIT $1
   `, [limit])
-    .then(res => res.rows);
-};
+  .then(res => res.rows);
+}
 exports.getAllProperties = getAllProperties;
 /**
  * Add a property to the database
@@ -122,5 +122,5 @@ const addProperty = function(property) {
   property.id = propertyId;
   properties[propertyId] = property;
   return Promise.resolve(property);
-};
+}
 exports.addProperty = addProperty;
