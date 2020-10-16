@@ -42,7 +42,9 @@ module.exports = function(router, database) {
     const guestId = req.session.userId;
     database.addReservation({...req.body, guest_id: guestId})
       .then(reservation => {
-        res.send(reservation);
+        res.redirect('/');
+        //res.send(reservation);
+        
       })
       .catch(e => {
         console.error(e);
